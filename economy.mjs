@@ -1,0 +1,2 @@
+// Preserve purchased upgrades/roles, but correct old regional kernel credits.
+export function migrateEconomy(profile){if(profile.economyVersion===3)return false;if(profile.economyVersion!==2)profile.legacyCoins=Math.max(0,Math.floor(Number(profile.kernels)||0));profile.economyV18={kernels:profile.kernels||0,version:profile.economyVersion||0};profile.kernels=Math.min(Math.max(0,Math.floor(Number(profile.kernels)||0)),Math.max(0,Math.floor(Number(profile.wins)||0)));profile.economyVersion=3;return true}
